@@ -27,8 +27,13 @@
     // 🧠 Examples of usage:
     // processSingleLearner({ name: "Elisabeth", lovesJS: 1 }) // should return { name: "Elisabeth", lovesJS: true }
     // processSingleLearner({ name: "Pete", age: 23, lovesJS: 0 }) // should return { name: "Pete", age: 23, lovesJS: false }
-    const processSingleLearner = () => {
-
+    const processSingleLearner = (learner) => {
+      if (learner.lovesJS === 1){
+        learner.lovesJS = true}
+        else if (learner.lovesJS === 0){
+          learner.lovesJS = false
+        }
+        return learner
     }
 
     // 👉 CHALLENGE 2
@@ -41,9 +46,17 @@
     // ❗ Notes:
     // 🧠 There are many approaches to this problem: using a loop, using forEach, using map...
     // 🧠 Solve this challenge using a for/in loop or a for loop.
-    const processLearnersLoop = () => {
-
-    }
+    const processLearnersLoop = (arr) => {
+for(let obj of arr){
+  if (obj.lovesJS === 0){
+    obj.lovesJS = false
+  } else if (obj.lovesJS === 1){
+    obj.lovesJS = true
+  }
+  
+}
+return arr
+}
 
     // 👉 CHALLENGE 3
     // 🧠 The function processLearnerForEach takes an array of learner objects as its argument, and returns it after some modifications.
@@ -51,9 +64,18 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 Use arrow functions whenever possible.
-    const processLearnerForEach = () => {
-
+    const processLearnerForEach = (arr) => {
+arr.forEach(obj => {
+  if (obj.lovesJS === 0){
+    obj.lovesJS = false}
+    else if( obj.lovesJS === 1){
+      obj.lovesJS = true
+    }return obj})
+return arr
     }
+
+
+    
 
     // 👉 CHALLENGE 4
     // 🧠 The function processLearnerMap takes an array of learner objects as its argument, and returns a new array.
@@ -61,9 +83,16 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the map method of the learners array.
     // 🧠 Use arrow functions.
-    const processLearnerMap = () => {
-
-    }
+    const processLearnerMap = (learners) => {
+learners.map(obj => {
+  if (obj.lovesJS === 1){
+    obj.lovesJS = true}
+    else if (obj.lovesJS === 0){
+      obj.lovesJS = false}
+      return obj})
+      return learners
+}
+    
 
     // 👉 CHALLENGE 5
     // 🧠 The function getJavaScriptLoversForEach takes an array of learner objects and returns an array or a string.
@@ -73,18 +102,35 @@
     // ❗ Notes:
     // 🧠 Solve this challenge using the forEach method of the learners array.
     // 🧠 You will need to declare a result array into which you push learners from inside your forEach loop.
-    const getJavaScriptLoversForEach = () => {
+    const getJavaScriptLoversForEach = (learn) => {
+let result = []
+learn.forEach(obj => {
+  if ((obj.lovesJS === true) || (obj.lovesJS === 1)){
+    result.push(obj)
+  }})
+  if (!result.length){
+    return 'no JS lovers here!'
+  }
+return result
+}
+ 
 
-    }
 
     // 👉 CHALLENGE 6
     // 🧠 The function getJavaScriptLoversFilter takes an array of learner objects and returns an array or a string.
     // 🧠 It should work exactly the same as the getJavaScriptLoversForEach function above.
     // ❗ Notes:
     // 🧠 Solve this challenge using the filter method of the learners array.
-    const getJavaScriptLoversFilter = () => {
+    const getJavaScriptLoversFilter = (learns) => {
+let filtered = learns.filter(bois => {
+  return (bois.lovesJS === 1 || bois.lovesJS === true)
+    })
+    
+    if (!filtered.length){
+        return 'no JS lovers here!'
+} else {return filtered}
+}
 
-    }
 
     // 👉 CHALLENGE 7
     // 🧠 The function sumOddInts takes an array of integers as its argument and returns an array with two elements.
@@ -98,9 +144,21 @@
     // ❗ Notes:
     // 🧠 This could be solved by using filter to make an array of odd integers, and then using forEach to add them up.
     // 🧠 Or you could opt for solving everything with a single forEach which is the recommended approach (saves a loop).
-    const sumOddInts = () => {
+    const sumOddInts = (arr) => {
+      let odds = []
+      let sum = 0
+arr.forEach(num => {
+  if (num % 2 !== 0){
+  odds.push(num)
+  sum += num
+  } }
+ )
+ return [sum, odds]}
+ 
 
-    }
+
+
+    
 
     // 👉 CHALLENGE 8
     // 🧠 The function checkInts takes any number of arguments, but each argument is an integer.
@@ -113,8 +171,21 @@
     // checkInts(2, 6) // should return ["even", "even"]
     // ❗ Notes:
     // 🧠 Solve this problem using rest parameters and map.
-    const checkInts = () => {
-
+    
+    const checkInts = (...nums) => {
+let result = []
+nums.map(num => {
+  if (num % 2 === 0){
+    result.push('even')}
+    else if(num %2 !== 0){
+      result.push('odd')
+    }
+ 
+}) 
+if (!result.length){
+  return 'pass some arguments, yo!'
+}
+else {return result}
     }
 
     // 🧪 TESTS, do not work below this line
